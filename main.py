@@ -17,9 +17,9 @@ def find_x(A, d):
     beta[0] = d[0] / Y[0]
 
     for i in range(1,n-1):
-        Y[i] = A[i][i] + A[i][i-1]*alpha[i-1]
+        Y[i] = A[i][i] + A[i][i-1] * alpha[i-1]
         alpha[i] = - A[i][i+1] / Y[i]
-        beta[i] = (d[i]-A[i][i-1]*beta[i-1]) / Y[i]
+        beta[i] = (d[i]-A[i][i-1] * beta[i-1]) / Y[i]
 
     Y[n-1] = A[n-1][n-1] + A[n-1][n-2] * alpha[n-2]
     beta[n-1] = (d[n-1] - A[n-1][n-2] * beta[n-2]) / Y[n-1]
