@@ -69,10 +69,14 @@ def find_x(A, d):
 
 # погрешность
 
-    d1 = np.dot(A, x)
+    d1 = [0 for k in range(0,n)]
+    for i in range(0,n):
+        for j in range(0,n):
+            d1[i] += A[i][j] * x[j]
     # print(d1)
-
-    r = np.subtract(d, d1)
+    r = [0 for k in range(0, n)]
+    for i in range(0, n):
+        r[i] = d[i] - d1[i]
     e = [0 for k in range(0, n)]
 
     A_inv = np.linalg.inv(A)
@@ -84,7 +88,7 @@ def find_x(A, d):
     print()
 
     for i in range(0, n):
-        c = x[i] - e[i]
+        c = x[i] + e[i]
         print(f'Приближенное значение x[{i}] =', c)
 
 find_x(A, d)
