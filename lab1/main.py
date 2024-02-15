@@ -1,27 +1,28 @@
 import numpy as np
 
-A = [[2, -1, 0],
-     [5, 4, 2],
-     [0, 1, -3]]
+A = [[4, 1, 0, 0],
+     [1, 4, 1, 0],
+     [0, 1, 4, 1],
+     [0, 0, 1, 4]]
 
-d = [3, 6, 1]
+d = [5, 6, 6, 5]
 # необходимые и достаточные условия
 def necessity(A):
     n = len(A)
 
     for i in range(1, n-1):
-        if A[i][i] < A[i-1][i]:
-            print('Не выполнено условия диагонального преобладания')
+        if abs(A[i][i]) < abs(A[i][i+1]):
+            print('Не выполнено условия диагонального преобладания 1')
             return False
 
     for i in range(1, n-1):
-        if A[i][i] > A[i][i-1]:
-            print('Не выполнено условия диагонального преобладания')
+        if abs(A[i][i]) < abs(A[i-2][i-1]):
+            print('Не выполнено условия диагонального преобладания 1')
             return False
 
     for i in range(1, n-1):
-        if A[i][i-1] < A[i-1][i] + A[i][i]:
-            print('Не выполнено условия диагонального преобладания')
+        if abs(A[i][i]) < abs(A[i-2][i-1]) + abs(A[i][i+1]):
+            print('Не выполнено условия диагонального преобладания 1')
             return False
 
     for i in range(1, n-1):
@@ -67,28 +68,37 @@ def find_x(A, d):
         print(f'x[{i}] =', x[i])
     print()
 
-# погрешность
+    x1 = [1, 1, 1, 1]
 
-    d1 = [0 for k in range(0,n)]
-    for i in range(0,n):
-        for j in range(0,n):
-            d1[i] += A[i][j] * x[j]
-    # print(d1)
-    r = [0 for k in range(0, n)]
-    for i in range(0, n):
-        r[i] = d[i] - d1[i]
     e = [0 for k in range(0, n)]
 
-    A_inv = np.linalg.inv(A)
-    # print(A_inv)
-
     for i in range(0, n):
-        e[i] += A_inv[i][i] * r[i]
+        e[i] = x[i] - x1[i]
         print("Погрешность {:.20f}".format(e[i]))
-    print()
+    print(e)
 
-    for i in range(0, n):
-        c = x[i] + e[i]
-        print(f'Приближенное значение x[{i}] =', c)
+# погрешность
+
+    # d1 = [0 for k in range(0,n)]
+    # for i in range(0,n):
+    #     for j in range(0,n):
+    #         d1[i] += A[i][j] * x[j]
+    # # print(d1)
+    # r = [0 for k in range(0, n)]
+    # for i in range(0, n):
+    #     r[i] = d[i] - d1[i]
+    # e = [0 for k in range(0, n)]
+    #
+    # A_inv = np.linalg.inv(A)
+    # # print(A_inv)
+    #
+    # for i in range(0, n):
+    #     e[i] += A_inv[i][i] * r[i]
+    #     print("Погрешность {:.20f}".format(e[i]))
+    # print()
+    #
+    # for i in range(0, n):
+    #     c = x[i] + e[i]
+    #     print(f'Приближенное значение x[{i}] =', c)
 
 find_x(A, d)
