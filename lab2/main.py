@@ -80,12 +80,8 @@ def main():
         x = from_val + (i+1/2) * h
         y = func(from_val + (i+1/2) * h)
 
-        # print(y)
         spl1 = spline(i, x, xi, a_coef, b_coef, c_coef, d_coef)
-        # print(spl1, end=", ")
         diff = abs(spl1 - y)
-        diff2 = abs(spl - yi[i])
-        # print(xi[i], spl, y, diff, sep="     ")
         print(f"{xi[i]:-2.5f}  {spl1:-10.5f}  {y:-10.5f} {diff:-10.5f}")
 
     print()
@@ -95,14 +91,10 @@ def main():
             spl = spline(i, xi[i], xi, a_coef, b_coef, c_coef, d_coef)
 
             x = from_val + (i+1/2) * h
-            nel = (xi[i] +xi[i+1]) / 2
             y = func(x)
-
-            # print(y)
+    
             spl1 = spline(i, x, xi, a_coef, b_coef, c_coef, d_coef)
-            # print(spl1, end=", ")
-            diff = abs(spl1 - y)
             diff2 = abs(spl - yi[i])
-            # print(xi[i], spl, y, diff, sep="     ")
+
             print(f"{x:-2.5f}        {spl:-10.5f} {yi[i]:-10.5f} {diff2:-10.5f}")
 main()
