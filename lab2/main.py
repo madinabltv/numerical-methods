@@ -77,10 +77,10 @@ def main():
     print('(x[i]+x[i+1])/2   S(x)      y(x)      |S(x) - y(x)| ')
 
     for i in range(0, n):
-            nel = (xi[i] +xi[i+1]) / 2
-            spl = spline(i, nel, xi, a_coef, b_coef, c_coef, d_coef)
-            y = func(nel)
-            diff2 = abs(spl - y)
-        
-            print(f"{nel:-2.5f}        {spl:-10.5f} {y:-10.5f} {diff2:-10.5f}")
+        nel = (xi[i] +xi[i+1]) / 2
+        spl = spline(i, nel, xi, a_coef, b_coef, c_coef, d_coef)
+        y = func(nel)
+        diff2 = abs(spl - y)        
+            
+        print(f"{nel:-2.5f}        {spl:-10.5f} {y:-10.5f} {diff2:-10.5f}")
 main()
