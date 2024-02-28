@@ -1,7 +1,4 @@
-# def function(x):
-#     return (x * (x ** 2) ** 0.5) + 16
-import pandas as pd
-import numpy as np
+# madina_bltv
 
 def func(x):
     return x * (x ** 0.5) + 16
@@ -75,7 +72,6 @@ def main():
     b_coef[n-1] = ((yi[n] - yi[n-1]) / h) - (2 * h / 3) * c_coef[n-1]
     d_coef[n-1] = - c_coef[n] / (3 * h)
 
-
     print('x         S(x)      y(x)        |S(x) - y(x)| ')
     print('                                 между узлами   ')
     for i in range(0, n):
@@ -92,6 +88,7 @@ def main():
         # print(xi[i], spl, y, diff, sep="     ")
         print(f"{xi[i]:-2.5f}  {spl1:-10.5f}  {y:-10.5f} {diff:-10.5f}")
 
+    print()
     print('(x[i]+x[i+1])/2   S(x)      y(x)      |S(x) - y(x)| ')
     print('                                        в узлах ')
     for i in range(0, n):
@@ -107,5 +104,5 @@ def main():
             diff = abs(spl1 - y)
             diff2 = abs(spl - yi[i])
             # print(xi[i], spl, y, diff, sep="     ")
-            print(f"{x:-2.5f}  {spl:-10.5f}  {yi[i]:-10.5f} {diff2:-10.5f}")
+            print(f"{x:-2.5f}        {spl:-10.5f} {yi[i]:-10.5f} {diff2:-10.5f}")
 main()
