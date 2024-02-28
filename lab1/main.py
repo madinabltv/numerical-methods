@@ -17,12 +17,12 @@ def necessity(A):
 
     for i in range(1, n-1):
         if abs(A[i][i]) < abs(A[i-2][i-1]):
-            print('Не выполнено условия диагонального преобладания 1')
+            print('Не выполнено условия диагонального преобладания 2')
             return False
 
     for i in range(1, n-1):
         if abs(A[i][i]) < abs(A[i-2][i-1]) + abs(A[i][i+1]):
-            print('Не выполнено условия диагонального преобладания 1')
+            print('Не выполнено условия диагонального преобладания 3')
             return False
 
     for i in range(1, n-1):
